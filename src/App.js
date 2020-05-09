@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import './style.css';
 
-import CardList from "./components/card-list/card-list.component";
-import SearchBox from "./components/search-box/search-box.component";
+import CardList from './components/card-list/card-list.component';
+import SearchBox from './components/search-box/search-box.component';
 
 class App extends Component {
   constructor() {
@@ -17,8 +17,8 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(response => this.setState({monsters: response}));
+      .then((response) => response.json())
+      .then((response) => this.setState({ monsters: response }));
   }
 
   handleChange = (e) => {
@@ -27,16 +27,14 @@ class App extends Component {
 
   render() {
     const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter(monster =>
-        monster.name.toLowerCase().includes(searchField.toLowerCase())
-    );
+    const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(searchField.toLowerCase()));
 
     return (
       <div className="App">
         <h1>Monsters Rolodex</h1>
         <SearchBox
-            placeholder="Search monster"
-            handleChange={this.handleChange}
+          placeholder="Search monster"
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters} />
       </div>
